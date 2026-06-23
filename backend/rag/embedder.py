@@ -79,7 +79,7 @@ def load_pdfs(directory: str) -> list[dict]:
 def build_index():
     """Main pipeline: load PDFs -> chunk -> embed -> save FAISS index."""
     print("=" * 60)
-    print("PGAGI Interview AI - FAISS Index Builder")
+    print("Interview AI - FAISS Index Builder")
     print("=" * 60)
 
     # Step 1: Load PDFs

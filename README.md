@@ -66,7 +66,7 @@ A fully functional end-to-end technical interview simulation platform powered by
 ### 1. Clone & Setup Environment
 ```bash
 git clone <repo-url>
-cd pgagi-interview
+cd interview-ai
 ```
 
 Create `.env` at project root:
@@ -121,7 +121,7 @@ Interactive docs: **http://localhost:8000/docs**
 ## Project Structure
 
 ```
-pgagi-interview/
+interview-ai/
 ├── backend/
 │   ├── main.py               # FastAPI app entry
 │   ├── db.py                 # SQLAlchemy engine + session

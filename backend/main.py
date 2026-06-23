@@ -8,7 +8,7 @@ from routers import sessions, interview
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="PGAGI Interview AI",
+    title="Interview AI",
     description="AI-powered role-based candidate screening system with RAG pipeline",
     version="1.0.0",
 )
@@ -27,4 +27,4 @@ app.include_router(interview.router, prefix="/sessions", tags=["interview"])
 
 @app.get("/", tags=["health"])
 def health_check():
-    return {"status": "ok", "service": "PGAGI Interview AI"}
+    return {"status": "ok", "service": "Interview AI"}
