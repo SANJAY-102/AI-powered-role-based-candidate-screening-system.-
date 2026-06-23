@@ -1,7 +1,7 @@
-# PGAGI Interview AI
+# Interview AI
 ### AI-Powered Role-Based Candidate Screening System
 
-> **Assignment**: AI/ML & Backend Engineering Intern · PGAGI  
+> **Assignment**: AI/ML & Backend Engineering Intern  
 > **Stack**: FastAPI · React 18 · FAISS · sentence-transformers · OpenAI GPT-3.5
 
 ---
@@ -177,4 +177,4 @@ pgagi-interview/
 
 ---
 
-*Built for PGAGI AI/ML & Backend Engineering Intern Assignment*
+*Built for AI/ML & Backend Engineering Intern Assignment*

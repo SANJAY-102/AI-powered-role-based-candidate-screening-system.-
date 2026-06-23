@@ -207,7 +207,7 @@ function App() {
             </div>
             <div className="hidden sm:block min-w-0">
               <h1 className="text-sm font-bold text-gray-900 font-display leading-none">
-                PGAGI Interview <span className="text-blue-600">AI</span>
+                Interview <span className="text-blue-600">AI</span>
               </h1>
               <p className="text-[9px] text-gray-400 font-semibold tracking-widest uppercase mt-0.5">RAG-Powered Screening</p>
             </div>
@@ -290,7 +290,7 @@ function App() {
       {/* ===== FOOTER ===== */}
       <footer className="border-t border-gray-200 bg-white py-5 mt-16">
         <div className="max-w-6xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-gray-400">
-          <span className="font-semibold tracking-wide text-gray-500 font-display">PGAGI Interview AI</span>
+          <span className="font-semibold tracking-wide text-gray-500 font-display">Interview AI</span>
           <span>FastAPI · React · FAISS · sentence-transformers · OpenAI</span>
           <span>AI/ML &amp; Backend Intern Assignment</span>
         </div>
