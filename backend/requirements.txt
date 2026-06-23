@@ -1,0 +1,23 @@
+# Core Web Framework
+fastapi>=0.111.0,<1.0
+uvicorn[standard]>=0.29.0,<1.0
+python-multipart>=0.0.9
+
+# Database
+sqlalchemy>=2.0.30,<3.0
+
+# PDF Parsing
+pymupdf>=1.24.0,<2.0
+
+# Embeddings & Vector Store
+sentence-transformers>=2.7.0,<3.0
+faiss-cpu>=1.8.0,<2.0
+numpy>=1.26.0,<2.0
+
+# LLM (optional — system works without it via local fallbacks)
+openai>=1.30.0,<2.0
+
+# Utilities
+python-dotenv>=1.0.0
+pydantic>=2.7.0,<3.0
+aiofiles>=23.2.0

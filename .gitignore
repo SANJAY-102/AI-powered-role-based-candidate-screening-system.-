@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+interview.db
+faiss_index/
+node_modules/
+dist/
+knowledge_base/
+.vite/
