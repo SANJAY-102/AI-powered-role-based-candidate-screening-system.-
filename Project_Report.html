@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Report – AI Interview Screening System</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 12pt;
+      color: #000000;
+      background: #ffffff;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 70px;
+    }
+
+    /* Cover */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-bottom: 2px solid #000;
+      padding-bottom: 60px;
+    }
+
+    .cover-tag {
+      font-size: 10pt;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .cover h1 {
+      font-size: 28pt;
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .cover h2 {
+      font-size: 14pt;
+      font-weight: normal;
+      font-style: italic;
+      margin-bottom: 50px;
+    }
+
+    .cover-divider {
+      width: 60px;
+      height: 2px;
+      background: #000;
+      margin: 30px auto;
+    }
+
+    .cover-meta {
+      font-size: 11pt;
+      line-height: 2;
+    }
+
+    .cover-meta strong { font-weight: bold; }
+
+    /* Sections */
+    .section {
+      margin-top: 50px;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      font-size: 15pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border-bottom: 1.5px solid #000;
+      padding-bottom: 6px;
+      margin-bottom: 18px;
+    }
+
+    .sub-title {
+      font-size: 12pt;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    p { margin-bottom: 12px; text-align: justify; }
+
+    ul, ol { padding-left: 24px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 11pt; }
+    th { border: 1px solid #000; padding: 8px 12px; font-weight: bold; text-align: left; background: #f0f0f0; }
+    td { border: 1px solid #000; padding: 8px 12px; vertical-align: top; }
+
+    /* Code block */
+    pre {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 9.5pt;
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      padding: 14px 16px;
+      margin: 12px 0;
+      white-space: pre-wrap;
+      word-break: break-all;
+      line-height: 1.5;
+    }
+
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 9.5pt;
+      background: #f0f0f0;
+      padding: 1px 4px;
+      border: 1px solid #ddd;
+    }
+
+    .footnote {
+      margin-top: 60px;
+      padding-top: 14px;
+      border-top: 1px solid #000;
+      font-size: 9pt;
+      text-align: center;
+    }
+
+    @media print {
+      body { font-size: 11pt; }
+      .page { padding: 40px 50px; }
+      .cover { min-height: auto; padding-bottom: 40px; }
+      pre { font-size: 8.5pt; }
+    }
+
+    @page { margin: 0; size: A4; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER PAGE -->
+  <div class="cover">
+    <div class="cover-tag">Technical Project Report</div>
+    <h1>AI-Powered Role-Based<br>Candidate Screening System</h1>
+    <h2>An Intelligent Interview Simulation Platform using RAG</h2>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      <strong>Type:</strong> AI/ML &amp; Backend Engineering Assignment<br>
+      <strong>Stack:</strong> FastAPI &middot; React 18 &middot; FAISS &middot; sentence-transformers &middot; OpenAI<br>
+      <strong>Date:</strong> June 2025<br>
+      <strong>Repository:</strong> github.com/SANJAY-102/AI-powered-role-based-candidate-screening-system
+    </div>
+  </div>
+
+
+  <!-- 1. OBJECTIVE -->
+  <div class="section">
+    <div class="section-title">1. Objective</div>
+    <p>
+      The goal of this project was to build a fully functional, end-to-end technical interview simulation platform. The system is designed to screen candidates for specific engineering roles by generating adaptive, domain-grounded questions using a Retrieval-Augmented Generation (RAG) pipeline, and scoring candidate responses in real time.
+    </p>
+    <p>
+      The system needed to go beyond a simple chatbot. It had to parse a candidate's resume, understand their experience level and technical background, retrieve relevant knowledge from a curated knowledge base, and then ask intelligent follow-up questions that match the candidate's profile.
+    </p>
+  </div>
+
+
+  <!-- 2. PROBLEM STATEMENT -->
+  <div class="section">
+    <div class="section-title">2. Problem Statement</div>
+    <p>
+      Traditional candidate screening is time-consuming, inconsistent, and heavily dependent on the availability of senior engineers. There is a clear need for an automated system that can conduct a structured technical interview, adjust question difficulty based on candidate profile, evaluate responses objectively, and generate a final performance report without any human intervention.
+    </p>
+    <p>The specific challenges this system addresses are:</p>
+    <ul>
+      <li>How to generate role-specific questions that are grounded in real technical knowledge, not hallucinated by a language model.</li>
+      <li>How to personalize difficulty based on resume data.</li>
+      <li>How to score open-ended answers fairly and consistently.</li>
+      <li>How to do all of the above without requiring the candidate to depend on a single API provider.</li>
+    </ul>
+  </div>
+
+
+  <!-- 3. SYSTEM ARCHITECTURE -->
+  <div class="section">
+    <div class="section-title">3. System Architecture</div>
+    <p>
+      The system is divided into two main layers: a Python backend powered by FastAPI, and a React frontend. These communicate via a REST API. The backend orchestrates all logic — resume parsing, vector retrieval, question generation, and scoring.
+    </p>
+
+    <pre>
++-----------------------------------------------------+
+|        Frontend  (React 18 + Vite + Tailwind)       |
+|  Upload Screen -> Interview Screen -> Report Screen  |
++----------------------+------------------------------+
+                       | HTTP / REST (Axios)
++----------------------v------------------------------+
+|            Backend  (FastAPI + SQLAlchemy)          |
+|  /sessions  /resume  /question  /answer  /summary   |
++------+-----------------+---------------+-----------+
+       |                 |               |
+  SQLite DB         FAISS Index     OpenAI API
+  (sessions,       (ML textbook     (question gen
+  Q&A history)      embeddings)      + scoring)
+    </pre>
+
+    <div class="sub-title">3.1 RAG Pipeline</div>
+    <p>
+      The RAG pipeline is the core of this system. It ensures questions are technically accurate and grounded in domain knowledge rather than being fabricated by the language model. The pipeline runs in five stages:
+    </p>
+    <ol>
+      <li><strong>Ingest:</strong> PyMuPDF extracts raw text from PDF documents in the knowledge base directory.</li>
+      <li><strong>Chunk:</strong> The extracted text is split into overlapping segments of approximately 400 tokens each, preserving context boundaries.</li>
+      <li><strong>Embed:</strong> Each chunk is encoded into a 384-dimensional dense vector using the <code>all-MiniLM-L6-v2</code> model from sentence-transformers.</li>
+      <li><strong>Index:</strong> All vectors are stored in a FAISS flat index for fast approximate nearest-neighbour retrieval.</li>
+      <li><strong>Generate:</strong> At interview time, a query is built from the candidate's role and skills, the top-k most similar chunks are retrieved, and these are passed as context to GPT-3.5-turbo to generate a targeted question.</li>
+    </ol>
+
+    <div class="sub-title">3.2 Scoring</div>
+    <p>
+      When a candidate submits an answer, it is sent alongside the original question and the retrieved knowledge chunk to GPT-3.5-turbo. The model evaluates the answer on a scale of 1 to 5 and returns a brief explanation. If the OpenAI API is unavailable, a local keyword-overlap heuristic is used as fallback.
+    </p>
+  </div>
+
+
+  <!-- 4. TECH STACK -->
+  <div class="section">
+    <div class="section-title">4. Technology Stack</div>
+    <table>
+      <tr><th>Layer</th><th>Technology</th><th>Purpose</th></tr>
+      <tr><td>Backend Framework</td><td>FastAPI (Python 3.10+)</td><td>REST API, async request handling</td></tr>
+      <tr><td>Database</td><td>SQLite + SQLAlchemy</td><td>Session and Q&amp;A persistence</td></tr>
+      <tr><td>Vector Search</td><td>FAISS (CPU)</td><td>Nearest-neighbour retrieval over embeddings</td></tr>
+      <tr><td>Embeddings</td><td>sentence-transformers (all-MiniLM-L6-v2)</td><td>Dense vector encoding of text chunks</td></tr>
+      <tr><td>LLM</td><td>OpenAI GPT-3.5-turbo</td><td>Question generation and answer scoring</td></tr>
+      <tr><td>PDF Parsing</td><td>PyMuPDF (fitz)</td><td>Resume and knowledge base text extraction</td></tr>
+      <tr><td>Frontend</td><td>React 18 + Vite</td><td>Single-page interview application</td></tr>
+      <tr><td>Styling</td><td>Tailwind CSS</td><td>Utility-first responsive UI</td></tr>
+      <tr><td>HTTP Client</td><td>Axios</td><td>Frontend-to-backend API communication</td></tr>
+      <tr><td>Voice</td><td>Web Speech API (native)</td><td>TTS question readout and STT dictation</td></tr>
+    </table>
+  </div>
+
+
+  <!-- 5. FEATURES -->
+  <div class="section">
+    <div class="section-title">5. Features</div>
+
+    <div class="sub-title">5.1 Resume Parsing</div>
+    <p>
+      Candidates upload a PDF resume. The backend extracts raw text using PyMuPDF, then runs keyword matching and pattern detection to identify technical skills, frameworks, programming languages, and approximate experience level (junior, mid, senior). This data seeds the RAG query and calibrates question difficulty.
+    </p>
+    <p>
+      If a candidate does not have a resume available, the system provides a mock profile option that generates a realistic sample profile for the selected role.
+    </p>
+
+    <div class="sub-title">5.2 Role-Based Adaptive Questioning</div>
+    <p>
+      Three engineering roles are supported: AI/ML Engineer, Backend Engineer, and Data Scientist. Questions are not fixed or templated — they are generated fresh each time using the RAG pipeline, so no two sessions produce identical questions.
+    </p>
+
+    <div class="sub-title">5.3 Interviewer Personas</div>
+    <p>
+      Three interviewer personas are available: Professional Mentor (structured and encouraging), Stress Interviewer (high-pressure, critical), and Academic Professor (theory-heavy and rigorous). The persona is injected into the GPT system prompt to shape the tone and style of questions.
+    </p>
+
+    <div class="sub-title">5.4 Real-Time Scoring and Feedback</div>
+    <p>
+      After each answer submission, a score from 1 to 5 and a short explanation is returned within seconds. The score is displayed as a notification and stored in the session database for inclusion in the final report.
+    </p>
+
+    <div class="sub-title">5.5 Voice Features</div>
+    <p>
+      The interview interface includes Text-to-Speech (TTS) — questions are read aloud using the browser's Web Speech API — and Speech-to-Text (STT), allowing candidates to dictate their answers verbally. Both features can be toggled individually in the settings panel.
+    </p>
+
+    <div class="sub-title">5.6 Session Recovery</div>
+    <p>
+      Every interview session is assigned a UUID. If a session is interrupted, the candidate can re-enter the session ID to resume exactly where they left off, including the question index and previously submitted answers.
+    </p>
+
+    <div class="sub-title">5.7 Evaluation Report</div>
+    <p>
+      Once all questions are answered, a detailed performance report is generated. It includes an overall score displayed as an SVG gauge, per-question score breakdown with expandable answer transcripts, topic coverage tags, and the option to export the full transcript as a PDF.
+    </p>
+  </div>
+
+
+  <!-- 6. API REFERENCE -->
+  <div class="section">
+    <div class="section-title">6. API Reference</div>
+    <p>All endpoints are served at <code>http://localhost:8000</code>. Interactive Swagger documentation is available at <code>/docs</code>.</p>
+    <table>
+      <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+      <tr><td>POST</td><td>/sessions</td><td>Create a new interview session with role and config</td></tr>
+      <tr><td>POST</td><td>/sessions/{id}/resume</td><td>Upload a resume PDF for parsing</td></tr>
+      <tr><td>POST</td><td>/sessions/{id}/mock-resume</td><td>Use a generated sample profile (no PDF needed)</td></tr>
+      <tr><td>GET</td><td>/sessions/{id}/question</td><td>Retrieve the next RAG-generated question</td></tr>
+      <tr><td>POST</td><td>/sessions/{id}/answer</td><td>Submit an answer and receive score + feedback</td></tr>
+      <tr><td>POST</td><td>/sessions/{id}/complete</td><td>Mark the session as complete</td></tr>
+      <tr><td>GET</td><td>/sessions/{id}/summary</td><td>Retrieve the full evaluation report</td></tr>
+      <tr><td>GET</td><td>/sessions/{id}</td><td>Inspect or resume a session by ID</td></tr>
+    </table>
+  </div>
+
+
+  <!-- 7. PROJECT STRUCTURE -->
+  <div class="section">
+    <div class="section-title">7. Project Structure</div>
+    <pre>
+project-root/
+|-- backend/
+|   |-- main.py                   -> FastAPI application entry point
+|   |-- db.py                     -> SQLAlchemy engine and session factory
+|   |-- models/
+|   |   |-- session.py            -> Session ORM model
+|   |   +-- question.py           -> Question/Answer ORM model
+|   |-- routers/
+|   |   |-- sessions.py           -> Session creation, resume upload
+|   |   +-- interview.py          -> Question, answer, summary endpoints
+|   |-- services/
+|   |   |-- resume_parser.py      -> PDF text extraction + skill detection
+|   |   +-- session_service.py    -> Business logic orchestration
+|   |-- rag/
+|   |   |-- embedder.py           -> PDF ingestion, chunking, FAISS indexing
+|   |   |-- retriever.py          -> Semantic similarity search
+|   |   +-- generator.py          -> GPT question generation + scoring
+|   |-- knowledge_base/           -> Place PDF textbooks here
+|   |-- faiss_index/              -> Auto-generated (embedder.py output)
+|   +-- requirements.txt
++-- frontend/
+    |-- index.html
+    |-- tailwind.config.js
+    |-- vite.config.js
+    +-- src/
+        |-- App.jsx               -> App shell, routing, settings modal
+        |-- index.css             -> Design system (light professional UI)
+        |-- api/client.js         -> Axios base client
+        +-- components/
+            |-- UploadScreen.jsx     -> Role selection + resume upload
+            |-- InterviewScreen.jsx  -> Live Q&A with TTS/STT
+            +-- SummaryScreen.jsx    -> Evaluation report dashboard
+    </pre>
+  </div>
+
+
+  <!-- 8. SETUP -->
+  <div class="section">
+    <div class="section-title">8. Setup and Installation</div>
+
+    <div class="sub-title">8.1 Prerequisites</div>
+    <ul>
+      <li>Python 3.10 or higher</li>
+      <li>Node.js 18 or higher</li>
+      <li>OpenAI API key (optional — the system works without one via local fallbacks)</li>
+    </ul>
+
+    <div class="sub-title">8.2 Backend Setup</div>
+    <pre>
+cd backend
+pip install -r requirements.txt
+
+# Create .env file
+# OPENAI_API_KEY=sk-...  (optional)
+
+# Build the FAISS knowledge index
+python create_sample_kb.py
+python rag/embedder.py
+
+# Start the API server
+python -m uvicorn main:app --reload --port 8000
+    </pre>
+
+    <div class="sub-title">8.3 Frontend Setup</div>
+    <pre>
+cd frontend
+npm install
+npm run dev
+    </pre>
+    <p>Open <code>http://localhost:5173</code> in a browser. The backend must be running on port 8000.</p>
+  </div>
+
+
+  <!-- 9. DESIGN DECISIONS -->
+  <div class="section">
+    <div class="section-title">9. Design Decisions</div>
+
+    <p>
+      <strong>SQLite instead of PostgreSQL.</strong> For a single-machine deployment of this scope, SQLite removes infrastructure overhead. The ORM layer abstracts the database engine, so switching to Postgres in production requires only a connection string change.
+    </p>
+    <p>
+      <strong>FAISS on CPU.</strong> FAISS does not require a GPU or any cloud service. The index is built once and queried locally, making the system fully self-contained. For a knowledge base of a few hundred chunks, CPU retrieval completes in under a millisecond.
+    </p>
+    <p>
+      <strong>all-MiniLM-L6-v2.</strong> At 80 MB, this model loads quickly and produces high-quality 384-dimensional embeddings suited for FAISS. It runs entirely on CPU and has strong semantic accuracy benchmarks relative to its size.
+    </p>
+    <p>
+      <strong>Offline fallbacks.</strong> The system works without an API key. Template-based questions are generated from role-specific topic lists, and answers are scored using keyword frequency against retrieved chunks. This ensures the system is always demonstrable.
+    </p>
+    <p>
+      <strong>Session UUID for recovery.</strong> Network interruptions or accidental tab closures are realistic during a long interview. Storing all state server-side with a recoverable ID means no progress is lost and the session can be resumed at any time.
+    </p>
+  </div>
+
+
+  <!-- 10. KNOWN LIMITATIONS -->
+  <div class="section">
+    <div class="section-title">10. Known Limitations</div>
+    <ul>
+      <li>The knowledge base quality directly affects question quality. Sparse or low-quality PDFs lead to generic questions.</li>
+      <li>Resume parsing uses keyword matching and is not a trained NLP model. Non-standard resume formats may result in fewer skills being detected.</li>
+      <li>GPT-3.5-turbo scoring can occasionally be inconsistent for borderline answers. The local fallback is less accurate but always functional.</li>
+      <li>SQLite is not suitable for concurrent multi-user production deployments. A production build should use PostgreSQL with connection pooling.</li>
+      <li>The current implementation does not support multi-language resumes or non-English sessions.</li>
+    </ul>
+  </div>
+
+
+  <!-- 11. FUTURE SCOPE -->
+  <div class="section">
+    <div class="section-title">11. Future Scope</div>
+    <ul>
+      <li>Add user authentication and a recruiter dashboard to track candidates across sessions.</li>
+      <li>Integrate a coding challenge module with in-browser execution for software engineering roles.</li>
+      <li>Train a custom scoring model on human-labelled interview responses to reduce GPT dependency.</li>
+      <li>Support multi-round interview flows (HR screening, technical round, system design round).</li>
+      <li>Add proctoring features such as tab-switch detection and session time limits.</li>
+      <li>Export reports as formatted PDFs using a headless rendering library like Puppeteer or WeasyPrint.</li>
+    </ul>
+  </div>
+
+
+  <!-- FOOTER -->
+  <div class="footnote">
+    AI-Powered Role-Based Candidate Screening System &nbsp;&middot;&nbsp;
+    AI/ML &amp; Backend Engineering Assignment &nbsp;&middot;&nbsp;
+    github.com/SANJAY-102/AI-powered-role-based-candidate-screening-system
+  </div>
+
+</div>
+</body>
+</html>
