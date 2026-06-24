@@ -56,6 +56,23 @@ A fully functional end-to-end technical interview simulation platform powered by
 
 ---
 
+## Knowledge Base (RAG Source Documents)
+
+The system uses the following official assignment textbooks as the primary RAG knowledge source (2,253 semantic chunks indexed):
+
+| Book | Role |
+|---|---|
+| *Machine Learning* — Tom Mitchell | AI/ML Role |
+| *The Hundred-Page Machine Learning Book* — Andriy Burkov | AI/ML Role |
+| *Machine Learning for Absolute Beginners* | AI/ML Role |
+| *Master Machine Learning Algorithms* — Jason Brownlee | Data Science Role |
+| *Pattern Recognition and Machine Learning* — Christopher Bishop | Advanced/Theoretical ML |
+| *Artificial Intelligence, Machine Learning & Deep Learning* | Advanced/Theoretical ML |
+
+> PDFs are not committed to this repository. Place them in `backend/knowledge_base/` and run `python rag/embedder.py` to rebuild the FAISS index.
+
+---
+
 ## Quick Start
 
 ### Prerequisites
